@@ -105,7 +105,7 @@ string n = s.size();
 vector<int> z(n);
 z[0] = 0;
 int l = 0, r = 0;
-for (int i = 0; i < n; i++) {
+for (int i = 1; i < n; i++) {
     if (i <= r) {
     z[i] = min(z[i - l], r - i + 1);
     }
