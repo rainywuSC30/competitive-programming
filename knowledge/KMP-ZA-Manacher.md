@@ -163,7 +163,7 @@ void init() {
 
 void manacher()
 {
-    int mr = 0, mid;
+    int mr = 0, mid;   // mr右边界，开区间
     for (int i = 1; i < n; i ++ )
     {
         if (i < mr) p[i] = min(p[mid * 2 - i], mr - i);
