@@ -88,3 +88,38 @@ Next[]求解与 KMP 匹配的时间复杂度类似，在每次 i++ 过程中，j
 **时间复杂度P(|S| + |P|)**
 
 
+
+# Z-algorithms(扩展KMP)
+
+约定：字符串下标以 0 为起点
+
+## 定义
+对于一个长度为 n 的字符串 s, 定义函数 $z[i]$ 表示 s 和 $s[i, n - 1]$ (即以$s[i]$开头的前缀)的最长公共前缀（LCP）的长度，则 z 被称为 s 的**Z函数** 特别地，$z[0] = 0$
+
+## 线性算法
+<img width="778" height="487" alt="image" src="https://github.com/user-attachments/assets/698c50d4-b3be-4a56-87ce-eefc02ff8cfa" />
+
+## 实现 
+```cpp
+string n = s.size();
+vector<int> z(n);
+z[0] = 0;
+int l = 0, r = 0;
+for (int i = 0; i < n; i++) {
+    if (i <= r) {
+    z[i] = min(z[i - l], r - i + 1);
+    }
+    while(i + z[i] < n && s[z[i]] == s[i + z[i]]) {
+        l = i;
+        r = i + z[i];
+        z[i]++;
+    }
+}
+//z[0] = n;
+```
+
+
+
+
+
+
