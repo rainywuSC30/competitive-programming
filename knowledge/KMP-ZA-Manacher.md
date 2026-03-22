@@ -120,6 +120,65 @@ for (int i = 1; i < n; i++) {
 
 
 
+# Manacher
+
+```cpp
+string n = s.size();
+vector<int> z(n);
+z[0] = 0;
+int l = 0, r = 0;
+for (int i = 0; i < n; i++) {
+  if (i <= r) {
+    z[i] = min(z[i - l], r - i + 1);
+  }
+  while(i + z[i] < n && s[z[i]] == s[i + z[i]]) {
+    l = i;
+    r = i + z[i];
+    z[i]++;
+  }
+}
+z[0] = n;
+```
+
+# manacher
+
+<img width="1115" height="715" alt="image" src="https://github.com/user-attachments/assets/278906a0-e839-451f-8ec3-63eccdcfdcba" />
+
+
+时间复杂度O(n)
+
+[模版题目] (https://www.acwing.com/problem/content/3190/)
+```cpp
+int n;
+char a[N] /*原串*/;, b[N]/*扩展串*/;   
+int p[N];        // 表示 b数组中以 i 为轴的最长回文串的半径
+
+void init() {
+    int k = 0;
+    b[k++] = '$', b[k++] = '#';
+    for (int i = 0; i < n; i++) b[k++] = a[i], b[k++] = '#';
+    b[k++] = '^';
+    n = k;
+}
+
+void manacher()
+{
+    int mr = 0, mid;
+    for (int i = 1; i < n; i ++ )
+    {
+        if (i < mr) p[i] = min(p[mid * 2 - i], mr - i);
+        else p[i] = 1;
+        while (b[i - p[i]] == b[i + p[i]]) p[i] ++ ;
+        if (i + p[i] > mr)
+        {
+            mr = i + p[i];
+            mid = i;
+        }
+    }
+}
+
+```
+
 
 
 
