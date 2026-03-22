@@ -1,3 +1,3 @@
-| Difficulty | Problem | Hints | Solution |
-| :----: | :----: | :----: | :----: |
-| :red_circle: 困难 | [七夕祭](https://www.acwing.com/problem/content/107/) | 排序 + 中位数贪心 + 推公式| [answer](../greedy/Acwing105.md) |
+| Source | Difficulty | Problem | Hints | Solution |
+| :----: | :----: | :----: | :----: | :----: |
+| Acwing | :red_circle: 困难 | [七夕祭](https://www.acwing.com/problem/content/107/) | 排序 + 中位数贪心 + 推公式| [answer](../greedy/Acwing105.md) |
