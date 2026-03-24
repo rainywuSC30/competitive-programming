@@ -1,4 +1,5 @@
-# KMP
+
+# 1. KMP
 KMP算法用于解决字符串的单模匹配问题，即在一个主串 S 中查找模式串 P 的所有出现位置
 
 **时间复杂度O(|S| + |P|)**
@@ -93,7 +94,7 @@ Next[]求解与 KMP 匹配的时间复杂度类似，在每次 i++ 过程中，j
 性质：循环节 是该字符串所有可能周期的基础单位
 
 
-# Z-algorithms(扩展KMP)
+# 2. Z-algorithms(扩展KMP)
 
 约定：字符串下标以 0 为起点
 
@@ -124,7 +125,7 @@ for (int i = 1; i < n; i++) {
 
 
 
-# Manacher
+# 3. Manacher
 
 ```cpp
 string n = s.size();
@@ -180,9 +181,56 @@ void manacher()
         }
     }
 }
-
 ```
 
+# 4. 最小表示法
+
+## 算法核心
+<img width="773" height="318" alt="image" src="https://github.com/user-attachments/assets/c9678862-8fb3-48db-b50b-8354ef250882" />
+
+## cpp代码
+
+模版题： [项链](https://www.acwing.com/activity/content/problem/content/3424/)
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+const int N = 2e6 + 10;
+
+int n;
+char a[N], b[N];
+
+// 求最小表示模版函数
+int get_min(char s[]) {
+    int i = 0, j = 1;
+    while(i < n && j < n) {
+        int k = 0;
+        while(k < n && s[i + k] == s[j + k]) k++;
+        if (k == n) break;
+        if (s[i + k] > s[j + k]) i += k + 1;
+        else j += k + 1;
+        if (i == j) j++;
+    }
+    int k = min(i, j);
+    s[k + n] = 0;  // 添加终止符号
+    return k; // 返回最小串的起始位置
+}
+
+int main() {
+    cin >> a >> b;
+    n = strlen(a);
+    memcpy(a + n, a, n); // 两个a拼接
+    memcpy(b + n, b, n);
+    
+    int x = get_min(a), y = get_min(b);
+    if (strcmp(a + x, b + y)) cout << "No" << endl;
+    else {
+        cout << "Yes" << endl;
+        cout << a + x << endl;
+    }
+    return 0;
+}
+```
 
 
 
