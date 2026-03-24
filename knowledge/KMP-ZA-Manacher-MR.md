@@ -111,9 +111,9 @@ vector<int> z(n);
 z[0] = 0;
 int l = 0, r = 0;
 for (int i = 1; i < n; i++) {
-    if (i <= r) {
-    z[i] = min(z[i - l], r - i + 1);
-    }
+    if (i <= r) 
+        z[i] = min(z[i - l], r - i + 1);
+    
     while(i + z[i] < n && s[z[i]] == s[i + z[i]]) {
         l = i;
         r = i + z[i];
@@ -231,6 +231,16 @@ int main() {
     return 0;
 }
 ```
+
+# 6. 参考题目
+1. [最佳奖赏](https://www.acwing.com/problem/content/description/4695/)
+2. [完美队形](https://www.acwing.com/problem/content/4697/)
+3. [周期II](https://www.acwing.com/problem/content/4693/)
+   熟悉ne[i]的含义，下一次调到从1到 ne[i]长度字符串的末尾位置，不断回退
+
+
+
+
 
 
 
