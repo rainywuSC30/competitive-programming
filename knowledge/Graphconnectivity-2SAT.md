@@ -1,5 +1,4 @@
-<img width="581" height="581" alt="image" src="https://github.com/user-attachments/assets/0fc6a081-cb98-4b0b-b3ff-874a48deae25" /># 1.双连通分量
-
+# 1. 双连通分量
 
 
 ## 概念和定义
@@ -159,6 +158,7 @@ void tarjan(int u) {
 
 ```
 ## 有向图的必经点和必经边
+
 <img width="581" height="581" alt="image" src="https://github.com/user-attachments/assets/64040f19-5cd2-4ff0-a1b4-d1167c5486ea" />
 
 
