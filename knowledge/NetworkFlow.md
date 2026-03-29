@@ -91,60 +91,71 @@ int main() {
 * [模板题](https://www.acwing.com/problem/content/2174/)
 
 ```cpp
-const int INF = 0x3f3f3f3f;
-int n, m, s, t, maxflow;
-int h[N], e[M], w[M], ne[M], idx; // w[i]: 容量-流量
-int d[N], now[M]; // Now 当前弧优化
-queue<int> q;
+#include<bits/stdc++.h>
+using namespace std;
+
+const int N = 1e4 + 10, M = 2e5 + 10, INF = 1e8;
+
+int n, m, S, T;
+int h[N], e[M], ne[M], f[M], idx;
+int q[N], d[N], cur[N];
+
 void add(int a, int b, int c) {
-    e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx++;
-    e[idx] = a, w[idx] = 0, ne[idx] = h[b],
-    h[b] = idx++;
+    e[idx] = b, f[idx] = c, ne[idx] = h[a], h[a] = idx++;
+    e[idx] = a, f[idx] = 0, ne[idx] = h[b], h[b] = idx++;
 }
 
-bool bfs() { // 在残量网络中构造分层图
-    memset(d, 0, sizeof d);
-    while(!q.empty()) q.pop();
-    q.push(s);
-    d[s] = 1; now[s] = h[s];
-    while(!q.empty()) {
-        int x = q.front(); q.pop();
-        for (int i = h[x]; ~i; i = ne[i]){
+bool bfs() {
+    memset(d, -1, sizeof d);
+    int hh = 0, tt = 0;
+    q[hh] = S, cur[S] = h[S], d[S] = 0;
+    while(hh <= tt) {
+        int u = q[hh++];
+        for (int i = h[u]; ~i; i = ne[i]) {
             int v = e[i];
-            if (w[i] && !d[v]) {
-                q.push(v);
-                now[v] = h[v];
-                d[v] = d[x] + 1;
-                if (v == t) return 1;
+            if (d[v] == -1 && f[i]) {
+                d[v] = d[u] + 1;
+                cur[v] = h[v];
+                q[++tt] = v;
+                if (v == T) return true;
             }
         }
     }
-    return 0;
+    return false;
 }
 
-int dinic(int x, int flow) { // 在当前分层图上增广
-    if (x == t) return flow;
-    int rest = flow, k, i;
-    for (i = now[x]; ~i && rest; i = ne[i]) {
-        now[x] = i; // 当前弧优化（避免重复遍历从x出发不可扩展的边）
+int find(int u, int limit) {
+    if (u == T) return limit;
+    int flow = 0;
+    for (int i = cur[u]; ~i && flow < limit; i = ne[i]) {
+        cur[u] = i;
         int v = e[i];
-        if(w[i] && d[v] == d[x] + 1) {
-            k = dinic(v, min(rest, w[i]));
-            if (!k) d[v] = 0; // 剪枝，去掉增广完毕的点
-            w[i] -= k;
-            w[i ^ 1] += k;
-            rest -= k;
+        if (d[v] == d[u] + 1 && f[i]) {
+            int t = find(v, min(f[i], limit - flow));
+            if (!t) d[v] = -1;
+            f[i] -= t, f[i ^ 1] += t, flow += t;
         }
     }
-    return flow - rest;
+    return flow;
+}
+
+int dinic() {
+    int r = 0, flow;
+    while(bfs()) while(flow = find(S, INF)) r += flow;
+    return r;
 }
 
 int main() {
-    int flow = 0;
-    while(bfs()) {
-        while(flow = dinic(s, inf)) maxflow += flow;
+    cin >> n >> m >> S >> T;
+    memset(h, -1, sizeof h);
+    for (int i = 1; i <= m; i++) {
+        int a, b, c;
+        cin >> a >> b >> c;
+        add(a, b, c);
     }
-    cout << maxflow << endl;
+    
+    cout << dinic() << endl;
+    return 0;
 }
 ```
 
