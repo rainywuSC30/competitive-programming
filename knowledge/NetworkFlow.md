@@ -20,49 +20,66 @@
 
 <img width="665" height="64" alt="image" src="https://github.com/user-attachments/assets/ae64da76-ae6d-4a2a-9411-6ff9ed0ce062" />
 
-
+[模版题目](https://www.acwing.com/problem/content/description/2173/)
 ```cpp
-const int INF = 0x3f3f3f3f
-int n, m, s, t;
-int h[N], e[M], ne[M], w[M], idx;
-int v[N], incf[N], pre[N], maxflow;
+#include<bits/stdc++.h>
+using namespace std;
+
+const int N = 1010, M = 2e4 + 10, INF = 0x3f3f3f3f;
+
+int n, m, S, T;
+int h[N], ne[M], e[M], f[M], idx;
+int q[N], d[N], pre[N];
+bool st[N];
 
 void add(int a, int b, int c) {
-    e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx++;
-    e[idx] = a, w[idx] = 0, ne[idx] = h[b], h[b] = idx++;
+    e[idx] = b, f[idx] = c, ne[idx] = h[a], h[a] = idx++;
+    e[idx] = a, f[idx] = 0, ne[idx] = h[b], h[b] = idx++;
 }
 
 bool bfs() {
-    memset(v, 0, sizeof v);
-    queue<int> q;
-    q.push(s); v[s] = 1;
-    incf[s] = INF; // 增广路上各边的最小剩余容量
-    while(!q.empty()) {
-        int x = q.front(); q.pop();
-        for (int i = h[x]; ~i; i = ne[i]) {
-            if (w[i]) { // w[i] 表示 c - f的值
-                int y = e[i];
-                if (v[y]) continue;
-                incf[y] = min(incf[x], w[i]);
-                pre[y] = i; // 记录前驱，便于找到最长路的实际方案
-                q.push(y);
-                v[y] = 1;
-                if (y == t) return 1;
+    int hh = 0, tt = 0;
+    memset(st, false, sizeof st);
+    q[hh] = S;
+    st[S] = true;
+    d[S] = INF;
+    while(hh <= tt) {
+        int u = q[hh++];
+        for (int i = h[u]; ~i; i = ne[i]) {
+            int v = e[i];
+            if (!st[v] && f[i]) {
+                st[v] = true;
+                d[v] = min(d[u], f[i]);
+                pre[v] = i;
+                if (v == T) return true;
+                q[++tt] = v;
             }
         }
     }
-    return 0;
+    return false;
 }
 
-void update() { // 更新增广路及其反向边的剩余容量
-    int x = t;
-    while(x != s) {
-        int i = pre[x];
-        w[i] -= incf[t];
-        w[i ^ 1] += incf[t]; // 利用“成对存储”的xor 1技巧
-        x = e[i ^ 1];
+int EK() {
+    int r = 0;
+    while(bfs()) {
+        r += d[T];
+        for (int i = T; i != S; i = e[pre[i] ^ 1]) {
+            f[pre[i]] -= d[T], f[pre[i] ^ 1] += d[T];
+        }
     }
-    maxflow += incf[t];
+    return r;
+}
+
+int main() {
+    cin >> n >> m >> S >> T;
+    memset(h, -1, sizeof h);
+    for (int i = 1; i <= m; i++) {
+        int a, b, c;
+        cin >> a >> b >> c;
+        add(a, b, c);
+    }
+    cout << EK() << endl;
+    return 0;
 }
 ```
 
@@ -164,9 +181,11 @@ int main() {
 
 ## acwing
 
-1. 基本概念
-   1.1 流网络，不考虑反向边
-   1.2 可行流，不考虑反向边
+
+1. 基本概念 
+    1.1 流网络，不考虑反向边
+   
+    1.2 可行流，不考虑反向边
        1.2.1 两个条件：容量限制、流量守恒
        1.2.2 可行流的流量指从源点流出的流量 - 流入源点的流量
        1.2.3 最大流是指最大可行流
