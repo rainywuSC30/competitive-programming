@@ -180,6 +180,7 @@ void tarjan(int u) {
 2. [学校网络](https://www.acwing.com/problem/content/description/369/)
 3. [最大半连通子图](https://www.acwing.com/problem/content/description/1177/)
 4. [银河](https://www.acwing.com/problem/content/description/370/)
+5. [强联通](https://www.acwing.com/problem/content/description/4451/)
 
 ## 桥
 
