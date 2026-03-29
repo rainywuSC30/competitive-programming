@@ -159,6 +159,17 @@ int main() {
 }
 ```
 
+## 题型
+[参考](https://www.acwing.com/solution/content/24047/)
+
+### 最大流之上下界可行流
+
+1. 无源汇上下界可行流
+[模版题目](https://www.acwing.com/problem/content/2190/)
+
+2. 
+
+
 ## 二分图最大匹配的必须边和可行边
 
 <img width="1" height="1" alt="image" src="https://github.com/user-attachments/assets/1e32e5bf-dec5-42ce-8a43-6d9e7ac7600a" />
@@ -169,12 +180,12 @@ int main() {
 <img width="564" height="546" alt="image" src="https://github.com/user-attachments/assets/e86c986e-b2a7-42cc-a4ee-3961d01d96b7" />
 
 
-## 最小割
+# 2.最小割
 
 <img width="572" height="316" alt="image" src="https://github.com/user-attachments/assets/fef60b95-ac0c-44f0-8e46-0d03327af695" />
 
 
-## 费用流
+# 3. 费用流
 
 <img width="581" height="554" alt="image" src="https://github.com/user-attachments/assets/27188b84-45ab-4738-b66e-c112c49b3d6b" />
 
