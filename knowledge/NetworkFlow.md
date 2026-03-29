@@ -128,7 +128,7 @@ int find(int u, int limit) {
     if (u == T) return limit;
     int flow = 0;
     for (int i = cur[u]; ~i && flow < limit; i = ne[i]) {
-        cur[u] = i;
+        cur[u] = i; // 当前弧优化
         int v = e[i];
         if (d[v] == d[u] + 1 && f[i]) {
             int t = find(v, min(f[i], limit - flow));
