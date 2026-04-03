@@ -104,3 +104,78 @@ int main() {
 }
 ```
 
+## 算法2
+##### 带权并查集
+
+#### 时间复杂度
+O(nlogn)
+
+#### 参考文献
+
+#### C++ 代码
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+const int N = 2e5 + 10;
+
+int n, q;
+int p[N];
+int d[N]; // 相对于根节点的颜色
+int cnt[N][2];
+int res;
+
+int find(int x){
+    if (p[x] != x) {
+        int u = find(p[x]);
+        d[x] ^= d[p[x]];
+        p[x] = u;
+    }
+    return p[x];
+}
+
+int main() {
+    cin >> n >> q;
+    // 初始每个旗子为白色0
+    for (int i = 1; i <= n; i++) p[i] = i, cnt[i][0] = 1;
+    bool flag = true;
+    while(q--) {
+        int a, b;
+        cin >> a >> b;
+        if (!flag) {
+            cout << -1 << endl;
+            continue;
+        }
+        int pa = find(a), pb = find(b);
+        
+        if (pa == pb) {
+            if ((d[a] ^ d[b]) == 0) {
+                flag = false;
+                cout << -1 << endl;
+                continue;
+            }
+            else cout << res << endl;
+        }
+        else {
+            // 减去之前的贡献
+            res -= min(cnt[pa][0], cnt[pa][1]);
+            res -= min(cnt[pb][0], cnt[pb][1]);
+
+            p[pa] = pb;
+            d[pa] = d[a] ^ d[b] ^ 1;
+            // 颜色不同，pa白变黑，黑变白
+            if (d[pa]) {
+                cnt[pb][0] += cnt[pa][1];
+                cnt[pb][1] += cnt[pa][0]; 
+            }
+            else {
+                cnt[pb][0] += cnt[pa][0];
+                cnt[pb][1] += cnt[pa][1]; 
+            }
+            res += min(cnt[pb][0], cnt[pb][1]);
+            cout << res << endl;
+        }
+    }
+    return 0;
+}
+```
