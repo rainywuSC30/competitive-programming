@@ -59,11 +59,13 @@ bool check() {
 }
 ```
 
-![image-20251225171116515](pics/image-20251225171116515.png)
+<img width="1100" height="440" alt="image" src="https://github.com/user-attachments/assets/cc4922c5-a034-4fb6-a895-12904d9c2a11" />
+
 
 ## 二分图的匹配
 
-![image-20251225165846507](pics/image-20251225165846507.png)
+<img width="625" height="293" alt="image" src="https://github.com/user-attachments/assets/714394a7-5b4e-42d9-922b-01f68e922d0d" />
+
 
 ### 匈牙利算法
 
@@ -99,7 +101,8 @@ for (int i = 1; i <= n1; i++) {
 
 ## 二分图的多重匹配
 
-![image-20251225175748690](pics/image-20251225175748690.png)
+<img width="563" height="414" alt="image" src="https://github.com/user-attachments/assets/b55f13de-6123-465f-9e78-f69ce193debb" />
+
 
 ## 二分图的带权匹配
 
@@ -115,13 +118,16 @@ for (int i = 1; i <= n1; i++) {
 
 
 
-![image-20251226112715854](pics/image-20251226112715854.png)
+<img width="550" height="386" alt="image" src="https://github.com/user-attachments/assets/d56c3475-d1b7-4494-b978-7f0fdcb46372" />
+
 
 ### KM 算法
 
-![image-20251226114547143](pics/image-20251226114547143.png)
+<img width="545" height="189" alt="image" src="https://github.com/user-attachments/assets/164df73d-5ba7-4251-864c-0dd189ef96df" />
 
-![image-20251226114502961](pics/image-20251226114502961.png)
+
+<img width="549" height="564" alt="image" src="https://github.com/user-attachments/assets/03171e98-1caf-423c-ae68-a0859ef4445a" />
+
 
 ```cpp
 
@@ -202,7 +208,8 @@ long long KM() {
 
 
 
-![屏幕截图 2025-12-27 100832](pics/屏幕截图 2025-12-27 100832.png)
+<img width="581" height="160" alt="image" src="https://github.com/user-attachments/assets/7d7f321b-f4ae-4e57-8ebd-c2b9c76358e8" />
+
 
 ## 二分图的最大独立集
 
@@ -212,13 +219,17 @@ long long KM() {
 
 ## 有向无环图的最小路径点覆盖
 
-![image-20260223144726071](pics/image-20260223144726071.png)
+<img width="1305" height="345" alt="image" src="https://github.com/user-attachments/assets/b0a653a4-340d-4bf6-8961-261bfb35491f" />
 
-![image-20251227193024542](pics/image-20251227193024542.png)
 
-![image-20251227193830502](pics/image-20251227193830502.png)
+<img width="572" height="223" alt="image" src="https://github.com/user-attachments/assets/e1b58f8e-21b1-43c6-bc92-e4fbcef84c5b" />
 
-![image-20251227194352754](pics/image-20251227194352754.png)
+
+<img width="552" height="404" alt="image" src="https://github.com/user-attachments/assets/93baf6fa-d210-42fb-bc05-3865ec382a54" />
+
+
+<img width="565" height="234" alt="image" src="https://github.com/user-attachments/assets/100994a8-b6b0-4476-8925-e26caa585141" />
+
 
 
 
