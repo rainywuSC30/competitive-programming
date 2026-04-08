@@ -4,13 +4,18 @@
 
 * $s[i]$--- 排名为 i 的后缀在原字符串中的起始位置
 * $rk[i]$ --- 起始位置为 i 的后缀在所有后缀中的排名
-* $x[i]$ --- 第一关键字的排名(当前阶)
+* $x[i]$ --- 第一关键字的排名(当前阶)， 本质上是rank数组，表示起始位置i的后缀的上一阶排名
 * $y[i]$ --- 第二关键字的排名对应的后缀位置，存储的是**按第二关键字排序后**，后缀的起始位置
 * $height[i]$ --- 表示$s[i]$ 和 $sa[i - 1]$ 这两个后缀的 **最长公共前缀(LCP)**
 
 
+
+
 # 模版题
 [https://www.acwing.com/problem/content/2717/]
+
+get_sa() O(nlogn)
+get_height() O(n)
 
 ```cpp
 #include<bits/stdc++.h>
@@ -21,6 +26,7 @@ const int N = 1e6 + 10;
 int n, m;
 char s[N];
 int sa[N], x[N], y[N], c[N], rk[N], height[N];
+
 
 void get_sa() {
     for (int i = 1; i <= n; i++) c[x[i] = s[i]]++;
