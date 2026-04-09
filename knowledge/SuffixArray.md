@@ -11,9 +11,11 @@
 
 # height数组
 
-height数组: 定义$height[i] = LCP(suffix(sa[i - 1]),suffix(sa[i]))$. 对于j和k, 不妨设rank[j] < rank[k], 则
+height数组: 定义 $height[i] = LCP(suffix(sa[i - 1]),suffix(sa[i]))$ . 对于j和k, 不妨设rank[j] < rank[k], 则
 $LCP(j, k) = min{hight[rank[j] + 1], hight[rank[j] +2], ... ,hight[rank[k]]}$
 例如，字符串为“aabaaaab”，求后缀“abaaaab”和后缀“aaab”的最长公共前缀
+
+
 <img width="937" height="588" alt="image" src="https://github.com/user-attachments/assets/ca77b93c-77ca-4be0-afc1-93053cbfb172" />
 
 
