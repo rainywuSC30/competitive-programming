@@ -27,7 +27,8 @@ $LCP(j, k) = min{hight[rank[j] + 1], hight[rank[j] +2], ... ,hight[rank[k]]}$
 设suffix(k)是排在suffix(i-1)前一名的后缀, 则他们的最长公共前缀是h[i-1]。那么suffix(k+1)将排在suffix(i)前面,并且suffix(k+1)和suffix(i)的最长公共前缀是h[i - 1] - 1, 所以suffix(i)和在它前一名的后缀的最长公共前缀至少是h[i- 1] - 1.
 
 
-
+# 扩展题单（难）
+https://www.acwing.com/blog/content/75003/
 
 # 模版题
 [https://www.acwing.com/problem/content/2717/]
