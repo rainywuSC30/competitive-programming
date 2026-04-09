@@ -29,10 +29,14 @@ $LCP(j, k) = min{hight[rank[j] + 1], hight[rank[j] +2], ... ,hight[rank[k]]}$
 
 # 应用
 ## 字符串的循环节
+
 类似KMP，通过后缀数组也可以找到字符串的循环节
 判定标准：
+
     1. $n % len == 0$
     2. $lcp(1, len + 1) = n - len;$
+
+[字符串乘方](https://www.acwing.com/problem/content/4683/)
 
 # 扩展题单（难）
 https://www.acwing.com/blog/content/75003/
