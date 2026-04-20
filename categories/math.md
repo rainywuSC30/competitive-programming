@@ -1,4 +1,4 @@
 
 | Source | Difficulty | Problem | Content | Hints | Solution |
 | :----: | :----: | :----: | :----: | :----: | :----: |
-| Acwing | $\color{red}{困难}$ | [七夕祭](https://www.acwing.com/problem/content/107/) | 排序 + 中位数贪心 + 推公式| 行和列的转移相互独立，不会彼此影响，各自转化为环形均分卡牌问题 | [answer](../greedy/Acwing105.md) |
+| Acwing | $\color{green}{1400}$ | [Codeforces1772D](https://codeforces.com/problemset/problem/1772/D) | 推公式 | 平方后化简建立不等式然后分类讨论 | [answer](../math/Codeforces1772D.md) |
