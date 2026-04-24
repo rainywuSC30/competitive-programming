@@ -9,3 +9,4 @@
 | Codeforces | $\color{green}{1300}$ | [Codeforces2175B](https://www.luogu.com.cn/problem/CF2175B) | 异或前缀和 | 任意构造xor前缀和数组，令 l - 1 和 r处的值相等，然后反推原数组 | [answer](../math/CF2175B.md) |
 | Codeforces | $\color{green}{1300}$ | [CodeforcesCF238A](https://www.luogu.com.cn/problem/CF238A) | 异或前缀和 | 要使区间内所有值的异或为0等价于区间内0或相同的数字，否则可以构造出区间异或和为0的数组 | [answer](../math/CF238A.md) |
 | Codeforces | $\color{green}{1300}$ | [CodeforcesCF820B](https://www.luogu.com.cn/problem/CF820B) | 计算几何 | 正n多边形的内角和公式以及，从顶点v向其他点连线可以将v处内角平分为 (n-2)份 | [answer](../math/CF820B.md) |
+| Codeforces | $\color{green}{1300}$ | [CodeforcesCF2124C](https://www.luogu.com.cn/problem/CF2124CB) | gcd + lcm | 使得两个数满足整除关系的最小x取值为 $\frac{a[i]}{gcd(a[i], a[i + 1]}$| [answer](../math/CF2124C.md) |
