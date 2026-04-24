@@ -60,39 +60,49 @@ Yes
 ```cpp
 #include<bits/stdc++.h>
 using namespace std;
-typedef long long LL;
+#define endl '\n'
+#define x first
+#define y second
+#define int long long 
+typedef pair<int, int> PII;
 
-const int N = 1e5 + 10;
+const int N = 2e5 + 10, INF = 0x3f3f3f3f;
 
-int n, m, t;
-int row[N], col[N], s[N];
+int n, k;
+int a[N];
 
-LL work(int n, int a[]) {
-    if (t % n) return - 1;
-    s[1] = 0;
-    int avg = t / n;
-    for (int i = 2; i <= n; i++) s[i] = s[i - 1] + (avg - a[i]);
-    sort(s + 1, s + n + 1);
-    int d = s[n / 2 + 1];
-    LL res = 0;
-    for (int i = 1; i <= n; i++) res += abs(d - s[i]);
-    return res;
-}
-
-int main() {
-    cin >> n >> m >> t;
-    for (int i = 1; i <= t; i++) {
-        int x, y;
-        cin >> x >> y;
-        row[x]++, col[y]++;
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int T;
+    cin >> T;
+    while(T--) {
+        cin >> n >> k;
+        for (int i = 1; i <= n; i++) a[i] = i;
+        if (k % 2) {cout << "NO" << endl; continue;}
+        int sm = 0;
+        for (int i = 1; i <= n; i++) {
+            sm += abs(a[i] - a[n - i + 1]);
+        }
+        if (sm < k) {cout << "NO" << endl; continue;}
+        cout << "YES" << endl;
+        
+        k /= 2;
+        for (int i = 1; ; i++) {
+            if (k > n - 2 * i + 1) {
+                swap(a[i], a[n - i + 1]);
+                k -= n - 2* i + 1;
+            }
+            else {
+                swap(a[i], a[i + k]);
+                break;
+            }
+        }
+        for (int i = 1; i <= n; i++) {
+            cout << a[i] << " ";
+        }
+        cout << endl;
     }
-    
-    LL r = work(n, row);
-    LL c = work(m, col);
-    if (r != -1 && c != -1) printf("both %lld\n", r + c);
-    else if (r != -1) printf("row %lld\n", r);
-    else if (c != -1) printf("column %lld\n", c);
-    else cout << "impossible" << endl;
     return 0;
 }
 ```
