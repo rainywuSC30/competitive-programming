@@ -106,7 +106,7 @@ Next[]求解与 KMP 匹配的时间复杂度类似，在每次 i++ 过程中，j
 
 ## 实现 
 ```cpp
-string n = s.size();
+int n = s.size();
 vector<int> z(n);
 z[0] = 0;
 int l = 0, r = 0;
